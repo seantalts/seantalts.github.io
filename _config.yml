@@ -2,9 +2,9 @@
 permalink:           pretty
 
 # Setup
-title:               Poole
-tagline:             The Jekyll Butler
-url:                 http://getpoole.com
+title:               Proper AI
+tagline:             PLT, Stats, and SWE for better science
+url:                 seantalts.github.io
 paginate:            1
 baseurl:             ""
 
@@ -17,9 +17,8 @@ sass:
 
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Sean Talts
+  url:               https://twitter.com/bayesean
 
 # Custom vars
 version:             2.0.0
