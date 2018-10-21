@@ -13821,25 +13821,11 @@ new params: [-15.9988999   15.29369511   7.16942873   0.91479659]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[270]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">efit</span> <span class="o">=</span> <span class="n">expectation_model</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
 <span class="n">efit</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[137]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">efit</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span>
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># shitty group assignments</span>
 </pre></div>
 
     </div>
@@ -13852,112 +13838,145 @@ new params: [-15.9988999   15.29369511   7.16942873   0.91479659]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[137]:</div>
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Rhat for parameter sigma is 1.1157325303401602!
+WARNING:pystan:Rhat for parameter lp__ is 1.1221980792747852!
+WARNING:pystan:Rhat above 1.1 or below 0.9 indicates that the chains very likely have not mixed
+WARNING:pystan:Chain 1: E-BFMI = 0.079956287503388
+WARNING:pystan:Chain 2: E-BFMI = 0.10182956992244153
+WARNING:pystan:Chain 3: E-BFMI = 0.06689687643557556
+WARNING:pystan:Chain 4: E-BFMI = 0.06306580770061987
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+WARNING:pystan:Truncated summary with the &#39;fit.__repr__&#39; method. For the full summary use &#39;print(fit)&#39;
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[270]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[0.34287063, 0.33352272, 0.32360666],
-       [0.38534671, 0.33009014, 0.28456314],
-       [0.32387381, 0.33703026, 0.33909593],
-       [0.40500117, 0.32694373, 0.2680551 ],
-       [0.30960678, 0.33668936, 0.35370385],
-       [0.38028181, 0.32616916, 0.29354904],
-       [0.34636906, 0.33375806, 0.31987287],
-       [0.33912141, 0.33499342, 0.32588517],
-       [0.31187386, 0.33640507, 0.35172107],
-       [0.31823332, 0.33544074, 0.34632594],
-       [0.365601  , 0.33248204, 0.30191696],
-       [0.28854845, 0.33530351, 0.37614805],
-       [0.33981265, 0.33450326, 0.32568408],
-       [0.35817954, 0.33082139, 0.31099908],
-       [0.3564163 , 0.33486351, 0.30872019],
-       [0.36999923, 0.32687867, 0.3031221 ],
-       [0.38540445, 0.3306891 , 0.28390645],
-       [0.30736623, 0.33507612, 0.35755765],
-       [0.34348607, 0.33116681, 0.32534712],
-       [0.29724348, 0.34231639, 0.36044012],
-       [0.29648312, 0.33735369, 0.36616319],
-       [0.32303331, 0.33817898, 0.33878772],
-       [0.38482209, 0.33393063, 0.28124728],
-       [0.30477306, 0.34342669, 0.35180025],
-       [0.29378647, 0.33673974, 0.36947379],
-       [0.27940436, 0.33181731, 0.38877833],
-       [0.33700281, 0.32880412, 0.33419307],
-       [0.35008759, 0.33203349, 0.31787893],
-       [0.341904  , 0.33428086, 0.32381514],
-       [0.31659466, 0.34048897, 0.34291637],
-       [0.31213773, 0.33853292, 0.34932936],
-       [0.2975474 , 0.3326255 , 0.3698271 ],
-       [0.34441398, 0.3374758 , 0.31811022],
-       [0.36932187, 0.33308847, 0.29758966],
-       [0.35248184, 0.32950247, 0.3180157 ],
-       [0.34158105, 0.33346443, 0.32495452],
-       [0.3115484 , 0.33251778, 0.35593381],
-       [0.32768694, 0.33530042, 0.33701264],
-       [0.3556731 , 0.33457808, 0.30974883],
-       [0.33513205, 0.33868246, 0.32618548],
-       [0.3133958 , 0.33711971, 0.34948449],
-       [0.30058265, 0.33728532, 0.36213203],
-       [0.39701214, 0.32487156, 0.2781163 ],
-       [0.31003051, 0.33696047, 0.35300902],
-       [0.31507269, 0.33560426, 0.34932305],
-       [0.31021775, 0.33016678, 0.35961548],
-       [0.34135534, 0.33826867, 0.32037599],
-       [0.29200219, 0.32743109, 0.38056673],
-       [0.40319877, 0.31963511, 0.27716612],
-       [0.32399511, 0.33651557, 0.33948933],
-       [0.39977861, 0.31784658, 0.28237481],
-       [0.34787149, 0.33451137, 0.31761714],
-       [0.32097827, 0.33947071, 0.33955101],
-       [0.35648301, 0.33485839, 0.3086586 ],
-       [0.33196652, 0.34094046, 0.32709302],
-       [0.37365912, 0.32566742, 0.30067345],
-       [0.24134901, 0.32549151, 0.43315948],
-       [0.35092544, 0.32931826, 0.3197563 ],
-       [0.32713939, 0.3340415 , 0.3388191 ],
-       [0.3445855 , 0.33581984, 0.31959466],
-       [0.28458706, 0.32990013, 0.38551281],
-       [0.35346086, 0.3316976 , 0.31484154],
-       [0.34129134, 0.33475361, 0.32395505],
-       [0.3064556 , 0.33752965, 0.35601475],
-       [0.32450495, 0.33245313, 0.34304191],
-       [0.33238082, 0.33552745, 0.33209173],
-       [0.30958675, 0.33779734, 0.35261591],
-       [0.31546996, 0.33175084, 0.35277919],
-       [0.35249988, 0.3320711 , 0.31542902],
-       [0.28117601, 0.33175963, 0.38706436],
-       [0.39248767, 0.33024124, 0.27727109],
-       [0.40543733, 0.32589654, 0.26866613],
-       [0.34183759, 0.33303631, 0.32512609],
-       [0.32910034, 0.33661346, 0.3342862 ],
-       [0.4028977 , 0.32794648, 0.26915582],
-       [0.29476089, 0.33606029, 0.36917882],
-       [0.30436192, 0.32904527, 0.36659281],
-       [0.34415467, 0.33755391, 0.31829141],
-       [0.31382047, 0.33479953, 0.35138   ],
-       [0.38430372, 0.32879984, 0.28689644],
-       [0.34318061, 0.33552953, 0.32128986],
-       [0.32192371, 0.33495585, 0.34312045],
-       [0.34739747, 0.33168742, 0.32091512],
-       [0.3189436 , 0.3378379 , 0.34321851],
-       [0.37289842, 0.33002759, 0.29707399],
-       [0.37055856, 0.33581998, 0.29362146],
-       [0.37861279, 0.3366816 , 0.28470561],
-       [0.3380775 , 0.33352739, 0.32839511],
-       [0.33620868, 0.33383518, 0.32995613],
-       [0.25938512, 0.33104001, 0.40957486],
-       [0.35733385, 0.33211797, 0.31054818],
-       [0.31152776, 0.33670355, 0.3517687 ],
-       [0.28416663, 0.33328579, 0.38254758],
-       [0.38168433, 0.32675101, 0.29156466],
-       [0.33166049, 0.3333332 , 0.33500632],
-       [0.30982378, 0.33653353, 0.3536427 ],
-       [0.33162061, 0.3363138 , 0.33206558],
-       [0.36990843, 0.32760897, 0.30248259],
-       [0.36067618, 0.33575575, 0.30356807],
-       [0.34506902, 0.33535388, 0.3195771 ]])</pre>
+<pre>
+Warning: Shown data is truncated to 100 parameters
+For the full summary use &#39;print(fit)&#39;
+
+Inference for Stan model: anon_model_5fb00b74056ca004b9d6262d4b3f4b40.
+4 chains, each with iter=2000; warmup=1000; thin=1; 
+post-warmup draws per chain=1000, total post-warmup draws=4000.
+
+              mean se_mean     sd   2.5%    25%    50%    75%  97.5%  n_eff   Rhat
+group[1,1]     0.3  2.4e-3   0.18   0.01   0.15    0.3   0.45    0.6   5246    1.0
+group[2,1]    0.27  2.2e-3   0.15   0.02   0.14   0.27   0.39   0.53   4675    1.0
+group[3,1]    0.32  2.7e-3   0.18   0.02   0.16   0.32   0.47   0.63   4678    1.0
+group[4,1]    0.24  2.1e-3   0.14   0.01   0.12   0.24   0.36   0.49   4847    1.0
+group[5,1]    0.33  2.6e-3   0.19   0.01   0.17   0.33   0.49   0.66   5419    1.0
+group[6,1]    0.26  2.2e-3   0.16   0.01   0.13   0.26    0.4   0.53   5185    1.0
+group[7,1]     0.3  2.4e-3   0.17   0.02   0.16   0.29   0.43   0.59   4874    1.0
+group[8,1]     0.3  2.6e-3   0.17   0.02   0.16    0.3   0.45    0.6   4354    1.0
+group[9,1]    0.33  3.0e-3   0.19   0.02   0.17   0.33   0.49   0.65   4080    1.0
+group[10,1]   0.31  2.6e-3   0.19   0.01   0.15   0.31   0.47   0.63   5168    1.0
+group[11,1]   0.28  2.5e-3   0.17   0.01   0.13   0.28   0.42   0.56   4516    1.0
+group[12,1]   0.34  3.1e-3    0.2   0.02   0.16   0.34   0.51   0.68   4236    1.0
+group[13,1]    0.3  2.4e-3   0.18   0.01   0.14    0.3   0.45    0.6   5590    1.0
+group[14,1]   0.28  2.6e-3   0.16   0.02   0.15   0.28   0.42   0.57   4085    1.0
+group[15,1]   0.28  2.5e-3   0.17   0.02   0.14   0.28   0.42   0.57   4520    1.0
+group[16,1]   0.27  2.4e-3   0.16   0.01   0.14   0.27   0.41   0.55   4424    1.0
+group[17,1]   0.26  2.4e-3   0.15   0.01   0.13   0.26   0.38   0.52   4083    1.0
+group[18,1]   0.33  2.8e-3   0.19   0.02   0.16   0.33    0.5   0.65   4677    1.0
+group[19,1]    0.3  2.4e-3   0.18   0.02   0.15   0.29   0.45   0.59   5281    1.0
+group[20,1]   0.33  2.9e-3   0.19   0.01   0.16   0.33    0.5   0.67   4387    1.0
+group[21,1]   0.33  2.9e-3    0.2   0.02   0.16   0.32    0.5   0.67   4706    1.0
+group[22,1]   0.32  2.7e-3   0.18   0.02   0.16   0.32   0.47   0.62   4504    1.0
+group[23,1]   0.27  2.3e-3   0.15   0.01   0.14   0.27   0.39   0.52   4440    1.0
+group[24,1]   0.32  3.1e-3   0.19   0.02   0.16   0.32    0.5   0.65   3866    1.0
+group[25,1]   0.34  3.0e-3    0.2   0.02   0.17   0.34   0.51   0.67   4269    1.0
+group[26,1]   0.35  2.9e-3    0.2   0.02   0.18   0.35   0.52    0.7   4932    1.0
+group[27,1]   0.31  2.7e-3   0.18   0.01   0.15   0.31   0.46   0.61   4457    1.0
+group[28,1]   0.29  2.5e-3   0.17   0.01   0.14   0.29   0.44   0.59   4729    1.0
+group[29,1]   0.29  2.5e-3   0.18   0.01   0.14   0.29   0.44   0.59   4811    1.0
+group[30,1]   0.32  2.9e-3   0.19   0.01   0.15   0.32   0.48   0.65   4322    1.0
+group[31,1]   0.32  2.7e-3   0.19   0.02   0.16   0.32   0.48   0.64   4944    1.0
+group[32,1]   0.34  2.9e-3    0.2   0.02   0.16   0.34   0.51   0.68   4884    1.0
+group[33,1]   0.29  2.4e-3   0.17   0.01   0.15   0.29   0.44   0.58   4944    1.0
+group[34,1]   0.27  2.3e-3   0.16   0.02   0.14   0.28    0.4   0.54   4586    1.0
+group[35,1]   0.29  2.7e-3   0.17   0.01   0.14   0.29   0.44   0.58   4135    1.0
+group[36,1]    0.3  2.6e-3   0.18   0.01   0.14    0.3   0.45   0.59   4502    1.0
+group[37,1]   0.33  2.4e-3   0.19   0.01   0.16   0.32   0.49   0.65   6215    1.0
+group[38,1]   0.31  2.7e-3   0.18   0.01   0.16   0.31   0.47   0.62   4543    1.0
+group[39,1]   0.29  2.3e-3   0.17   0.02   0.14   0.29   0.43   0.58   5457    1.0
+group[40,1]    0.3  2.5e-3   0.18   0.01   0.15   0.31   0.46    0.6   5111    1.0
+group[41,1]   0.33  2.9e-3   0.19   0.01   0.16   0.32    0.5   0.66   4473    1.0
+group[42,1]   0.33  2.8e-3   0.19   0.01   0.16   0.34    0.5   0.66   4930    1.0
+group[43,1]   0.25  2.2e-3   0.15   0.01   0.12   0.25   0.37    0.5   4738    1.0
+group[44,1]   0.33  2.7e-3   0.19   0.02   0.16   0.33   0.49   0.65   4896    1.0
+group[45,1]   0.32  2.9e-3   0.19   0.01   0.16   0.32   0.48   0.63   4255    1.0
+group[46,1]   0.33  3.0e-3   0.19   0.02   0.17   0.32   0.49   0.65   4007    1.0
+group[47,1]    0.3  2.6e-3   0.17   0.02   0.15   0.29   0.45    0.6   4622    1.0
+group[48,1]   0.35  2.9e-3    0.2   0.02   0.17   0.35   0.52   0.69   4940    1.0
+group[49,1]   0.25  2.2e-3   0.15   0.01   0.12   0.24   0.37    0.5   4587    1.0
+group[50,1]   0.31  2.8e-3   0.18   0.01   0.15   0.31   0.47   0.62   4331    1.0
+group[51,1]   0.25  2.2e-3   0.15   0.01   0.13   0.25   0.38   0.51   4546    1.0
+group[52,1]    0.3  2.6e-3   0.17   0.02   0.16    0.3   0.44   0.59   4195    1.0
+group[53,1]   0.31  2.7e-3   0.18   0.02   0.15   0.31   0.47   0.62   4555    1.0
+group[54,1]   0.28  2.5e-3   0.17   0.02   0.14   0.27   0.42   0.57   4427    1.0
+group[55,1]   0.31  2.8e-3   0.18   0.01   0.16   0.31   0.46   0.61   4002    1.0
+group[56,1]   0.28  2.5e-3   0.16   0.01   0.14   0.27   0.41   0.55   4006    1.0
+group[57,1]   0.39  3.4e-3   0.23   0.02   0.19   0.39   0.58   0.77   4461    1.0
+group[58,1]   0.29  2.5e-3   0.17   0.02   0.15   0.29   0.44   0.58   4700    1.0
+group[59,1]   0.31  2.6e-3   0.18   0.02   0.16   0.31   0.46   0.62   4811    1.0
+group[60,1]    0.3  2.5e-3   0.17   0.01   0.15   0.29   0.44   0.59   4581    1.0
+group[61,1]   0.35  3.2e-3   0.21   0.02   0.17   0.35   0.53   0.69   4253    1.0
+group[62,1]   0.29  2.4e-3   0.17   0.01   0.14   0.28   0.43   0.58   5007    1.0
+group[63,1]    0.3  2.3e-3   0.17   0.01   0.15   0.29   0.44    0.6   5757    1.0
+group[64,1]   0.33  2.8e-3   0.19   0.02   0.16   0.32   0.48   0.65   4508    1.0
+group[65,1]   0.32  3.1e-3   0.19   0.01   0.15   0.32   0.47   0.63   3528    1.0
+group[66,1]   0.31  2.7e-3   0.18   0.01   0.16   0.31   0.46   0.61   4477    1.0
+group[67,1]   0.33  2.9e-3   0.19   0.02   0.16   0.33   0.49   0.65   4293    1.0
+group[68,1]   0.32  2.9e-3   0.19   0.02   0.16   0.32   0.48   0.64   4092    1.0
+group[69,1]   0.29  2.5e-3   0.17   0.02   0.14   0.29   0.43   0.57   4485    1.0
+group[70,1]   0.36  3.0e-3   0.21   0.02   0.18   0.36   0.54   0.72   5046    1.0
+group[71,1]   0.25  2.2e-3   0.15   0.01   0.12   0.25   0.37    0.5   4485    1.0
+group[72,1]   0.25  1.9e-3   0.15   0.01   0.12   0.25   0.38    0.5   5822    1.0
+group[73,1]    0.3  2.5e-3   0.17   0.02   0.15   0.29   0.44   0.59   4565    1.0
+group[74,1]   0.32  2.6e-3   0.18   0.02   0.16   0.32   0.47   0.62   4746    1.0
+group[75,1]   0.25  2.2e-3   0.15   0.01   0.12   0.24   0.37    0.5   4387    1.0
+group[76,1]   0.34  2.9e-3    0.2   0.02   0.16   0.33   0.51   0.68   4885    1.0
+group[77,1]   0.33  2.7e-3    0.2   0.01   0.16   0.33    0.5   0.67   5608    1.0
+group[78,1]    0.3  2.6e-3   0.18   0.01   0.15    0.3   0.45   0.59   4512    1.0
+group[79,1]   0.32  2.8e-3   0.19   0.01   0.16   0.32   0.48   0.64   4559    1.0
+group[80,1]   0.26  2.2e-3   0.15   0.01   0.13   0.26   0.39   0.52   4488    1.0
+group[81,1]    0.3  2.6e-3   0.17   0.02   0.15   0.29   0.44   0.59   4442    1.0
+group[82,1]   0.32  2.7e-3   0.19   0.02   0.16   0.32   0.48   0.63   4677    1.0
+group[83,1]   0.29  2.6e-3   0.17   0.01   0.15   0.29   0.44   0.58   4451    1.0
+group[84,1]   0.32  2.5e-3   0.18   0.02   0.16   0.32   0.47   0.62   5309    1.0
+group[85,1]   0.27  2.2e-3   0.16   0.02   0.14   0.27    0.4   0.54   5271    1.0
+group[86,1]   0.27  2.1e-3   0.16   0.02   0.14   0.27    0.4   0.54   5271    1.0
+group[87,1]   0.27  2.3e-3   0.15   0.02   0.13   0.27    0.4   0.53   4713    1.0
+group[88,1]   0.31  2.6e-3   0.18   0.02   0.15   0.31   0.46    0.6   4535    1.0
+group[89,1]   0.31  2.7e-3   0.18   0.02   0.16   0.31   0.46    0.6   4314    1.0
+group[90,1]   0.38  3.2e-3   0.22   0.02   0.19   0.38   0.57   0.74   4540    1.0
+group[91,1]   0.29  2.4e-3   0.17   0.01   0.14   0.28   0.43   0.58   4958    1.0
+group[92,1]   0.33  2.8e-3   0.19   0.01   0.17   0.34    0.5   0.65   4815    1.0
+group[93,1]   0.36  2.9e-3   0.21   0.02   0.17   0.36   0.53    0.7   5141    1.0
+group[94,1]   0.27  2.2e-3   0.15   0.02   0.14   0.27    0.4   0.53   5093    1.0
+group[95,1]   0.32  2.8e-3   0.18   0.01   0.16   0.32   0.47   0.62   4335    1.0
+group[96,1]   0.33  2.8e-3   0.19   0.02   0.16   0.33    0.5   0.65   4617    1.0
+group[97,1]   0.31  2.5e-3   0.18   0.02   0.15   0.31   0.46   0.61   5255    1.0
+group[98,1]   0.27  2.4e-3   0.16   0.01   0.13   0.27   0.41   0.55   4504    1.0
+group[99,1]   0.28  2.5e-3   0.16   0.01   0.14   0.28   0.42   0.56   4318    1.0
+lp__        -602.8    8.82  54.14 -701.7 -644.1 -601.7 -562.1 -505.6     38   1.12
+
+Samples were drawn using NUTS at Sun Oct 21 00:35:14 2018.
+For each parameter, n_eff is a crude measure of effective sample size,
+and Rhat is the potential scale reduction factor on split chains (at 
+convergence, Rhat=1).</pre>
 </div>
 
 </div>
@@ -13968,7 +13987,7 @@ new params: [-15.9988999   15.29369511   7.16942873   0.91479659]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[147]:</div>
+<div class="prompt input_prompt">In&nbsp;[271]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">em_algo</span><span class="p">(</span><span class="n">maxi_model</span><span class="p">,</span> <span class="n">expectation_model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">num_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
@@ -13979,6 +13998,7 @@ new params: [-15.9988999   15.29369511   7.16942873   0.91479659]
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration </span><span class="si">{}</span><span class="s2">; beta: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]))</span>
         <span class="c1"># E step</span>
         <span class="n">efit</span> <span class="o">=</span> <span class="n">expectation_model</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="c1"># Use the sample mean as the group assignment simplex</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">efit</span><span class="o">.</span><span class="n">extract</span><span class="p">()[</span><span class="s1">&#39;group&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         
         <span class="c1"># M step</span>
@@ -14001,9 +14021,9 @@ new params: [-15.9988999   15.29369511   7.16942873   0.91479659]
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Original beta: [-116.43297767   72.04383948   38.9385973 ]
-Iteration 0; beta: [41.25547549 -1.77402583 48.43987292]
-Iteration 1; beta: [  34.72164799 -112.12691211   46.61467111]
+<pre>Original beta: [  34.81878147 -112.64493292   46.28279639]
+Iteration 0; beta: [ -3.59344058 -32.86852646  21.8326248 ]
+Iteration 1; beta: [ 20.9338156  -86.47885418  46.93093845]
 </pre>
 </div>
 </div>
@@ -14014,19 +14034,19 @@ Iteration 1; beta: [  34.72164799 -112.12691211   46.61467111]
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:pystan:n_eff / iter for parameter lp__ is 0.0009086236090737835!
+<pre>WARNING:pystan:n_eff / iter for parameter lp__ is 0.0006772846691974476!
 WARNING:pystan:n_eff / iter below 0.001 indicates that the effective sample size has likely been overestimated
-WARNING:pystan:Rhat for parameter sigma is 1.5171014541060182!
-WARNING:pystan:Rhat for parameter lp__ is 1.9569536556387803!
+WARNING:pystan:Rhat for parameter sigma is 1.5772541462411396!
+WARNING:pystan:Rhat for parameter lp__ is 2.2929696460277094!
 WARNING:pystan:Rhat above 1.1 or below 0.9 indicates that the chains very likely have not mixed
-WARNING:pystan:13 of 4000 iterations ended with a divergence (0.325%).
+WARNING:pystan:33 of 4000 iterations ended with a divergence (0.825%).
 WARNING:pystan:Try running with adapt_delta larger than 0.8 to remove the divergences.
-WARNING:pystan:851 of 4000 iterations saturated the maximum tree depth of 10 (21.275%)
+WARNING:pystan:954 of 4000 iterations saturated the maximum tree depth of 10 (23.85%)
 WARNING:pystan:Run again with max_treedepth larger than 10 to avoid saturation
-WARNING:pystan:Chain 1: E-BFMI = 0.028999331868550436
-WARNING:pystan:Chain 2: E-BFMI = 0.08254845479652848
-WARNING:pystan:Chain 3: E-BFMI = 0.0661778139409541
-WARNING:pystan:Chain 4: E-BFMI = 0.030306715668340943
+WARNING:pystan:Chain 1: E-BFMI = 0.08636177088090548
+WARNING:pystan:Chain 2: E-BFMI = 0.1183776457445831
+WARNING:pystan:Chain 3: E-BFMI = 0.024184527416314404
+WARNING:pystan:Chain 4: E-BFMI = 0.0377874880074901
 WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
 </pre>
 </div>
@@ -14038,7 +14058,7 @@ WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your mo
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Iteration 2; beta: [  34.81878147 -112.64493292   46.28279639]
+<pre>Iteration 2; beta: [ 20.91314216 -87.35267788  46.98427761]
 </pre>
 </div>
 </div>
@@ -14048,72 +14068,218 @@ WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your mo
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-147-5436342ceb69&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span>         mfit <span class="ansi-blue-fg">=</span> maxi_model<span class="ansi-blue-fg">.</span>optimizing<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     13</span>         data<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;beta&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> mfit<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;beta&#39;</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">---&gt; 14</span><span class="ansi-red-fg"> </span>em_algo<span class="ansi-blue-fg">(</span>maxi_model<span class="ansi-blue-fg">,</span> expectation_model<span class="ansi-blue-fg">,</span> fd<span class="ansi-blue-fg">)</span>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Rhat for parameter sigma is 1.1662902113775195!
+WARNING:pystan:Rhat for parameter lp__ is 1.2119837156258804!
+WARNING:pystan:Rhat above 1.1 or below 0.9 indicates that the chains very likely have not mixed
+WARNING:pystan:2 of 4000 iterations ended with a divergence (0.05%).
+WARNING:pystan:Try running with adapt_delta larger than 0.8 to remove the divergences.
+WARNING:pystan:Chain 1: E-BFMI = 0.04755913631432413
+WARNING:pystan:Chain 2: E-BFMI = 0.03675889809161817
+WARNING:pystan:Chain 3: E-BFMI = 0.06411132073869108
+WARNING:pystan:Chain 4: E-BFMI = 0.03561881104416588
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+</pre>
+</div>
+</div>
 
-<span class="ansi-green-fg">&lt;ipython-input-147-5436342ceb69&gt;</span> in <span class="ansi-cyan-fg">em_algo</span><span class="ansi-blue-fg">(maxi_model, expectation_model, data, num_iter)</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span>         print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Iteration {}; beta: {}&#34;</span><span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;beta&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span>         <span class="ansi-red-fg"># E step</span>
-<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg">         </span>efit <span class="ansi-blue-fg">=</span> expectation_model<span class="ansi-blue-fg">.</span>sampling<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span>         data<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;group&#39;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>mean<span class="ansi-blue-fg">(</span>efit<span class="ansi-blue-fg">.</span>extract<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;group&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span> 
+<div class="output_area">
 
-<span class="ansi-green-fg">/usr/local/lib/python3.7/site-packages/pystan/model.py</span> in <span class="ansi-cyan-fg">sampling</span><span class="ansi-blue-fg">(self, data, pars, chains, iter, warmup, thin, seed, init, sample_file, diagnostic_file, verbose, algorithm, control, n_jobs, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    774</span>         call_sampler_args <span class="ansi-blue-fg">=</span> izip<span class="ansi-blue-fg">(</span>itertools<span class="ansi-blue-fg">.</span>repeat<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> args_list<span class="ansi-blue-fg">,</span> itertools<span class="ansi-blue-fg">.</span>repeat<span class="ansi-blue-fg">(</span>pars<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    775</span>         call_sampler_star <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>module<span class="ansi-blue-fg">.</span>_call_sampler_star
-<span class="ansi-green-fg">--&gt; 776</span><span class="ansi-red-fg">         </span>ret_and_samples <span class="ansi-blue-fg">=</span> _map_parallel<span class="ansi-blue-fg">(</span>call_sampler_star<span class="ansi-blue-fg">,</span> call_sampler_args<span class="ansi-blue-fg">,</span> n_jobs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    777</span>         samples <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>smpl <span class="ansi-green-fg">for</span> _<span class="ansi-blue-fg">,</span> smpl <span class="ansi-green-fg">in</span> ret_and_samples<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    778</span> 
+    <div class="prompt"></div>
 
-<span class="ansi-green-fg">/usr/local/lib/python3.7/site-packages/pystan/model.py</span> in <span class="ansi-cyan-fg">_map_parallel</span><span class="ansi-blue-fg">(function, args, n_jobs)</span>
-<span class="ansi-green-intense-fg ansi-bold">     84</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     85</span>             pool <span class="ansi-blue-fg">=</span> multiprocessing<span class="ansi-blue-fg">.</span>Pool<span class="ansi-blue-fg">(</span>processes<span class="ansi-blue-fg">=</span>n_jobs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 86</span><span class="ansi-red-fg">             </span>map_result <span class="ansi-blue-fg">=</span> pool<span class="ansi-blue-fg">.</span>map<span class="ansi-blue-fg">(</span>function<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     87</span>         <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     88</span>             pool<span class="ansi-blue-fg">.</span>close<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/multiprocessing/pool.py</span> in <span class="ansi-cyan-fg">map</span><span class="ansi-blue-fg">(self, func, iterable, chunksize)</span>
-<span class="ansi-green-intense-fg ansi-bold">    266</span>         <span class="ansi-green-fg">in</span> a list that <span class="ansi-green-fg">is</span> returned<span class="ansi-blue-fg">.</span>
-<span class="ansi-green-intense-fg ansi-bold">    267</span>         &#39;&#39;&#39;
-<span class="ansi-green-fg">--&gt; 268</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_map_async<span class="ansi-blue-fg">(</span>func<span class="ansi-blue-fg">,</span> iterable<span class="ansi-blue-fg">,</span> mapstar<span class="ansi-blue-fg">,</span> chunksize<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    269</span> 
-<span class="ansi-green-intense-fg ansi-bold">    270</span>     <span class="ansi-green-fg">def</span> starmap<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> func<span class="ansi-blue-fg">,</span> iterable<span class="ansi-blue-fg">,</span> chunksize<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Iteration 3; beta: [ 21.49493122 -88.13704701  46.3259473 ]
+</pre>
+</div>
+</div>
 
-<span class="ansi-green-fg">/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/multiprocessing/pool.py</span> in <span class="ansi-cyan-fg">get</span><span class="ansi-blue-fg">(self, timeout)</span>
-<span class="ansi-green-intense-fg ansi-bold">    649</span> 
-<span class="ansi-green-intense-fg ansi-bold">    650</span>     <span class="ansi-green-fg">def</span> get<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> timeout<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 651</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>wait<span class="ansi-blue-fg">(</span>timeout<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    652</span>         <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> self<span class="ansi-blue-fg">.</span>ready<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    653</span>             <span class="ansi-green-fg">raise</span> TimeoutError
+<div class="output_area">
 
-<span class="ansi-green-fg">/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/multiprocessing/pool.py</span> in <span class="ansi-cyan-fg">wait</span><span class="ansi-blue-fg">(self, timeout)</span>
-<span class="ansi-green-intense-fg ansi-bold">    646</span> 
-<span class="ansi-green-intense-fg ansi-bold">    647</span>     <span class="ansi-green-fg">def</span> wait<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> timeout<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 648</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>_event<span class="ansi-blue-fg">.</span>wait<span class="ansi-blue-fg">(</span>timeout<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    649</span> 
-<span class="ansi-green-intense-fg ansi-bold">    650</span>     <span class="ansi-green-fg">def</span> get<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> timeout<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+    <div class="prompt"></div>
 
-<span class="ansi-green-fg">/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/threading.py</span> in <span class="ansi-cyan-fg">wait</span><span class="ansi-blue-fg">(self, timeout)</span>
-<span class="ansi-green-intense-fg ansi-bold">    550</span>             signaled <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_flag
-<span class="ansi-green-intense-fg ansi-bold">    551</span>             <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> signaled<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 552</span><span class="ansi-red-fg">                 </span>signaled <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cond<span class="ansi-blue-fg">.</span>wait<span class="ansi-blue-fg">(</span>timeout<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    553</span>             <span class="ansi-green-fg">return</span> signaled
-<span class="ansi-green-intense-fg ansi-bold">    554</span> 
 
-<span class="ansi-green-fg">/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/threading.py</span> in <span class="ansi-cyan-fg">wait</span><span class="ansi-blue-fg">(self, timeout)</span>
-<span class="ansi-green-intense-fg ansi-bold">    294</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>    <span class="ansi-red-fg"># restore state no matter what (e.g., KeyboardInterrupt)</span>
-<span class="ansi-green-intense-fg ansi-bold">    295</span>             <span class="ansi-green-fg">if</span> timeout <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 296</span><span class="ansi-red-fg">                 </span>waiter<span class="ansi-blue-fg">.</span>acquire<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    297</span>                 gotit <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span>
-<span class="ansi-green-intense-fg ansi-bold">    298</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Rhat for parameter lp__ is 1.1213335016555586!
+WARNING:pystan:Rhat above 1.1 or below 0.9 indicates that the chains very likely have not mixed
+WARNING:pystan:Chain 1: E-BFMI = 0.023793654865949664
+WARNING:pystan:Chain 2: E-BFMI = 0.12081905558602336
+WARNING:pystan:Chain 3: E-BFMI = 0.06737230575837842
+WARNING:pystan:Chain 4: E-BFMI = 0.04131102555268011
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+</pre>
+</div>
+</div>
 
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Iteration 4; beta: [ 26.75281521 -89.2801291   39.89030341]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Chain 1: E-BFMI = 0.07256835650813424
+WARNING:pystan:Chain 2: E-BFMI = 0.08232131628476169
+WARNING:pystan:Chain 3: E-BFMI = 0.0956485940248879
+WARNING:pystan:Chain 4: E-BFMI = 0.07396086232764862
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Iteration 5; beta: [ 21.45265578 -90.37360984  45.76797409]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Rhat for parameter sigma is 1.2106669582831677!
+WARNING:pystan:Rhat for parameter lp__ is 1.3455533516161826!
+WARNING:pystan:Rhat above 1.1 or below 0.9 indicates that the chains very likely have not mixed
+WARNING:pystan:1 of 4000 iterations ended with a divergence (0.025%).
+WARNING:pystan:Try running with adapt_delta larger than 0.8 to remove the divergences.
+WARNING:pystan:Chain 1: E-BFMI = 0.08093989430990671
+WARNING:pystan:Chain 2: E-BFMI = 0.04485334291887987
+WARNING:pystan:Chain 3: E-BFMI = 0.0402337144623449
+WARNING:pystan:Chain 4: E-BFMI = 0.09438939951333641
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Iteration 6; beta: [ 22.3658989  -91.13397713  44.56188515]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Rhat for parameter sigma is 1.1687867446346574!
+WARNING:pystan:Rhat for parameter lp__ is 1.1924936689298336!
+WARNING:pystan:Rhat above 1.1 or below 0.9 indicates that the chains very likely have not mixed
+WARNING:pystan:Chain 1: E-BFMI = 0.0779069583773524
+WARNING:pystan:Chain 2: E-BFMI = 0.05118534236948631
+WARNING:pystan:Chain 3: E-BFMI = 0.05005323025048814
+WARNING:pystan:Chain 4: E-BFMI = 0.056202162274556336
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Iteration 7; beta: [ 22.18616077 -91.89531043  44.62643986]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Chain 1: E-BFMI = 0.11152796900714382
+WARNING:pystan:Chain 2: E-BFMI = 0.04707671104563218
+WARNING:pystan:Chain 3: E-BFMI = 0.11882304910974623
+WARNING:pystan:Chain 4: E-BFMI = 0.03660767458667997
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Iteration 8; beta: [ 22.25029701 -92.60420504  44.40234528]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Rhat for parameter sigma is 1.1193038531183725!
+WARNING:pystan:Rhat for parameter lp__ is 1.2071429213007652!
+WARNING:pystan:Rhat above 1.1 or below 0.9 indicates that the chains very likely have not mixed
+WARNING:pystan:1000 of 4000 iterations saturated the maximum tree depth of 10 (25.0%)
+WARNING:pystan:Run again with max_treedepth larger than 10 to avoid saturation
+WARNING:pystan:Chain 1: E-BFMI = 0.07468723493614429
+WARNING:pystan:Chain 2: E-BFMI = 0.028783557701503534
+WARNING:pystan:Chain 3: E-BFMI = 0.01687177261674604
+WARNING:pystan:Chain 4: E-BFMI = 0.09237032602968896
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Iteration 9; beta: [ 22.46913085 -93.43458416  44.09826419]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING:pystan:Rhat for parameter sigma is 1.195771019355573!
+WARNING:pystan:Rhat for parameter lp__ is 1.2822946971097566!
+WARNING:pystan:Rhat above 1.1 or below 0.9 indicates that the chains very likely have not mixed
+WARNING:pystan:Chain 1: E-BFMI = 0.06588655593571956
+WARNING:pystan:Chain 2: E-BFMI = 0.08392865446456031
+WARNING:pystan:Chain 3: E-BFMI = 0.10500837409569222
+WARNING:pystan:Chain 4: E-BFMI = 0.04798908203005176
+WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your model
+</pre>
 </div>
 </div>
 
