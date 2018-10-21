@@ -13454,10 +13454,10 @@ convergence, Rhat=1).</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[143]:</div>
+<div class="prompt input_prompt">In&nbsp;[193]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">log_prob</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">grad_log_prob</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13474,11 +13474,11 @@ convergence, Rhat=1).</pre>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on built-in function log_prob:
+<pre>Help on built-in function grad_log_prob:
 
-log_prob(...) method of stanfit4anon_model_390a0ec538f0cb4f0a4483ba147e0080_913984840570262847.StanFit4Model instance
-    Expose the log_prob of the model to stan_fit so user can call
-    this function.
+grad_log_prob(...) method of stanfit4anon_model_390a0ec538f0cb4f0a4483ba147e0080_913984840570262847.StanFit4Model instance
+    Expose the grad_log_prob of the model to stan_fit so user
+    can call this function.
     
     Parameters
     ----------
@@ -13487,23 +13487,6 @@ log_prob(...) method of stanfit4anon_model_390a0ec538f0cb4f0a4483ba147e0080_9139
     adjust_transform : bool
         Whether we add the term due to the transform from constrained
         space to unconstrained space implicitly done in Stan.
-    
-    Note
-    ----
-    In Stan, the parameters need be defined with their supports. For
-    example, for a variance parameter, we must define it on the positive
-    real line. But inside Stan&#39;s sampler, all parameters defined on the
-    constrained space are transformed to unconstrained space, so the log
-    density function need be adjusted (i.e., adding the log of the absolute
-    value of the Jacobian determinant).  With the transformation, Stan&#39;s
-    samplers work on the unconstrained space and once a new iteration is
-    drawn, Stan transforms the parameters back to their supports. All the
-    transformation are done inside Stan without interference from the users.
-    However, when using the log density function for a model exposed to
-    Python, we need to be careful.  For example, if we are interested in
-    finding the mode of parameters on the constrained space, we then do not
-    need the adjustment.  For this reason, there is an argument named
-    `adjust_transform` for functions `log_prob` and `grad_log_prob`.
 
 </pre>
 </div>
@@ -13515,10 +13498,10 @@ log_prob(...) method of stanfit4anon_model_390a0ec538f0cb4f0a4483ba147e0080_9139
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[144]:</div>
+<div class="prompt input_prompt">In&nbsp;[200]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fit</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">upar</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># adjust_transform seems to default to True</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fit</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">upar</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">24.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">23.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.7</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">8.8</span><span class="p">)])</span> <span class="c1"># adjust_transform seems to default to True</span>
 </pre></div>
 
     </div>
@@ -13531,13 +13514,13 @@ log_prob(...) method of stanfit4anon_model_390a0ec538f0cb4f0a4483ba147e0080_9139
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[144]:</div>
+    <div class="prompt output_prompt">Out[200]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>-386.70221104212527</pre>
+<pre>-267.78711575183934</pre>
 </div>
 
 </div>
@@ -13592,6 +13575,177 @@ log_prob(...) method of stanfit4anon_model_390a0ec538f0cb4f0a4483ba147e0080_9139
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Stochastic-gradient-descent-with-Stan">Stochastic gradient descent with Stan<a class="anchor-link" href="#Stochastic-gradient-descent-with-Stan">&#182;</a></h1><p>Stochastic gradient descent is basically just gradient descent with random data subsets at each iteration. Stan does not implement this, but we can easily do this using the <code>log_prob</code> and <code>grad_log_prob</code> methods of the fit object PyStan returns. To be concrete, the algorithm will: randomly initialize, evaluate <code>grad_log_prob</code> at that position in parameter space, adjust the parameters according to that gradient, and repeat the last two steps until the parameters change less than some tolerance.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[148]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generate a ton of data (or this would be less fun)</span>
+<span class="n">sgd_data</span> <span class="o">=</span> <span class="n">gen_fake_data</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>sigma: 2.6148919343314736
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[268]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Assume the observations are always called &#39;y&#39;, and always 3 beta parameters,</span>
+<span class="c1"># since this is just an illustration and not productionalizable code</span>
+<span class="k">def</span> <span class="nf">sgd</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">numParams</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">numParams</span><span class="p">)</span>
+    <span class="n">new_params</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">new_params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">8.8</span><span class="p">)</span> <span class="c1"># hax - sigma should be positive, also SGD SUX</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;new_params: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_params</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">new_params</span> <span class="o">-</span> <span class="n">params</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">new_params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">subset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])),</span> <span class="n">size</span><span class="p">)</span>
+        <span class="c1"># Use this hack to get a model with data</span>
+        <span class="n">model_with_data</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="nb">iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;Fixed_param&#39;</span><span class="p">,</span>
+                                         <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="n">data</span><span class="p">,</span>
+                                               <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">subset</span><span class="p">],</span>
+                                               <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">][</span><span class="n">subset</span><span class="p">],</span>
+                                               <span class="s1">&#39;numObs&#39;</span><span class="p">:</span> <span class="n">size</span><span class="p">})</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="n">model_with_data</span><span class="o">.</span><span class="n">grad_log_prob</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">adjust_transform</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1">#print(&quot;grad {}&quot;.format(grad))</span>
+        <span class="n">new_params</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">grad</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;new params: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_params</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">params</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sgd_data</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">])</span>
+<span class="n">sgd</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">sgd_data</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[-16.02126103  15.29848408   7.19441698]
+new_params: [ 1.96796133 22.80975954  9.85273041  2.17475172]
+new params: [-0.37768434 21.8305395   9.50682107  2.25083747]
+new params: [-3.06085882 20.7139119   9.1058192   2.06121228]
+new params: [-6.28408818 19.36283677  8.62658011  1.83093959]
+new params: [-10.43155098  17.62031151   8.01021932   1.48260734]
+new params: [-14.83405766  15.78608479   7.36925782   0.90130219]
+new params: [-15.92467355  15.33906932   7.19869735   0.98572609]
+new params: [-16.02137515  15.2997305    7.18322427   1.02415639]
+new params: [-16.02514756  15.3059415    7.17593135   0.92693517]
+new params: [-16.01917244  15.30327473   7.18611837   0.97838085]
+new params: [-16.02410886  15.31047737   7.18688107   1.04860497]
+new params: [-16.03099437  15.28555268   7.20274812   1.02933739]
+new params: [-16.02934058  15.30490861   7.17599538   0.9481738 ]
+new params: [-16.01501387  15.2982072    7.18548136   1.0183951 ]
+new params: [-16.01690784  15.29332343   7.19543123   0.85908236]
+new params: [-16.02178972  15.28882103   7.17410878   1.12567647]
+new params: [-16.02469626  15.29361907   7.17094974   1.03576549]
+new params: [-16.01071213  15.28540296   7.20041093   0.87728606]
+new params: [-16.01045924  15.29718304   7.18037604   0.86822714]
+new params: [-16.01283494  15.30441838   7.17886016   0.86468173]
+new params: [-15.9988999   15.29369511   7.16942873   0.91479659]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[268]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-16.00822695,  15.29228693,   7.1787844 ,   0.96846103])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[269]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.96846103</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[269]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2.633887864259263</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you can see, SGD takes forever and seems to severely underestimate the variance. Oh well, at least you can farm it out to millions of computers at once.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13667,10 +13821,11 @@ log_prob(...) method of stanfit4anon_model_390a0ec538f0cb4f0a4483ba147e0080_9139
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[117]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">efit</span> <span class="o">=</span> <span class="n">expectation_model</span><span class="o">.</span><span class="n">sampling</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+<span class="n">efit</span>
 </pre></div>
 
     </div>
@@ -13962,19 +14117,6 @@ WARNING:pystan:E-BFMI below 0.2 indicates you may need to reparameterize your mo
 </div>
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
 </div>
 </div>
 
