@@ -8,14 +8,14 @@ This ended up compiling down to the following assembly:
 
 ```nasm
 mov r12d, 524357
-…
-movzx eax, byte ptr [rsp + 7] # moves the current char, c into eax
-lea ecx, [rax - 65] # Maps c s.t. A = 0, B = 1, C = 2, …
-cmp cl, 19 # Checks if c < 19
-ja .LBB0_1 # if so continues
-movzx ecx, cl # zeroes upper bits of ecx (cl is low byte of ecx)
-bt r12, rcx 
-jae .LBB0_1
+; ... 
+movzx eax, byte ptr [rsp + 7] ; moves the current char, c into eax
+lea ecx, [rax - 65]           ; Maps c s.t. A = 0, B = 1, C = 2, …
+cmp cl, 19                    ; Checks if c < 19
+ja .LBB0_1                    ; if so, continues by jumping to LBB0_1
+movzx ecx, cl                 ; zeroes upper bits of ecx (cl is low byte of ecx)
+bt r12, rcx                   ; Bit Test - see below
+jae .LBB0_1                   ; jumps based on result of bt
 ```
 
 The really interesting part happens with the r12 register and the bt (Bit Test) instruction. Here’s what the constant 524357 looks like in binary:
