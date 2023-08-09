@@ -24,6 +24,6 @@ The really interesting part happens with the r12 register and the bt (Bit Test) 
 10000001000100101
 ```
 
-So here we see that the 1st, 3rd, 7th, and 20th bits are set. Recall that we’re looking for A, C, G, and T and have subtracted 65 from their ASCII representation; now A=0, C=2, G=6, and T=19. The Bit Test instruction checks the r12 bit specified by the value in the rcx register. The r12 register holds this bit mask and the rcx register holds our current char value, and by this point we’re guaranteed it’s 19 or less.
+So here we see that the 1st, 3rd, 7th, and 20th bits are set. Recall that we’re looking for A, C, G, and T and have subtracted 65 from their ASCII representation; now A=0, C=2, G=6, and T=19. The Bit Test instruction checks the `r12` bit specified by the value in the `rcx` register. The `r12` register holds this bit mask and the `rcx` register holds our current char value, and by this point we’re guaranteed it’s 19 or less.
 
 In essence, the compiler has compiled our manual check of 4 characters into an uber-efficient bit mask! We can check 4 values for the price of a single subtraction and a bitmask check. Pretty slick.
