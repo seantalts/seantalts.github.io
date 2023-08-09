@@ -6,7 +6,7 @@ if (c != 'A' && c != 'C' && c != 'G' && c != 'T') continue;
 
 This ended up compiling down to the following assembly:
 
-```assembly
+```nasm
 mov r12d, 524357
 …
 movzx eax, byte ptr [rsp + 7] # moves the current char, c into eax
