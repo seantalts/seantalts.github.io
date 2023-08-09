@@ -7,7 +7,6 @@ if (c != 'A' && c != 'C' && c != 'G' && c != 'T') continue;
 This ended up compiling down to the following assembly:
 
 ```assembly
-Copy code
 mov r12d, 524357
 …
 movzx eax, byte ptr [rsp + 7] # moves the current char, c into eax
@@ -18,6 +17,7 @@ movzx ecx, cl # zeroes upper bits of ecx (cl is low byte of ecx)
 bt r12, rcx 
 jae .LBB0_1
 ```
+
 The really interesting part happens with the r12 register and the bt (Bit Test) instruction. Here’s what the constant 524357 looks like in binary:
 
 ```
