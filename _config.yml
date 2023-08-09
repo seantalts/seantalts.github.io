@@ -3,7 +3,7 @@ permalink:           pretty
 
 # Setup
 title:               Bayesean dot com
-tagline:             yummy science
+tagline:             yummy scientific computing
 url:                 seantalts.github.io
 paginate:            1
 baseurl:             ""
@@ -18,7 +18,7 @@ sass:
 # About/contact
 author:
   name:              Sean Talts
-  url:               https://twitter.com/bayesean
+  url:               https://twitter.com/seantalts
 
 # Custom vars
 version:             2.0.0
